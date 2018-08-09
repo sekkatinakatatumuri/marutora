@@ -14,5 +14,10 @@
 @endsection
 
 @section('content')
-    テスト
+    <h3 class="text-center">国旗から検索 <span class="glyphicon glyphicon-globe"></span></h3>
+    <b><p class="text-center">アフリカ</p></b>
+    <div class="text-center nationalflag">
+        <a href="{{ URL::to('/welcome/create?id=360630&ccode=EGP&keyword=エジプト') }}"><img src={{ asset('/images/flag/flag055.png') }} class="flag" alt="エジプトの情報"></a>
+    </div>
+    @include('items.weather', ['weather' => $weather])
 @endsection

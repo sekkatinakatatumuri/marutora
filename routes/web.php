@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index')->name('welcome.index');
-
 Auth::routes();
+Route::get('/', 'WelcomeController@index')->name('welcome.index');
+Route::resource('welcome', 'WelcomeController', ['only' => ['create']]);

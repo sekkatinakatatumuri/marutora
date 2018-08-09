@@ -48,3 +48,9 @@ footer {
     background-color: #ed486f;
     border-color: #ed486f;
 }
+
+/* wheater */
+ul {
+    padding-left: 20px;
+    display: inline-block;
+}
