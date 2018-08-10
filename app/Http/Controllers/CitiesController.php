@@ -16,9 +16,6 @@ class CitiesController extends Controller
     
     public function show($id)
     {
-        
-        dd($id);
-        
         // 都市データの取得
         $city = City::find($id);
         
