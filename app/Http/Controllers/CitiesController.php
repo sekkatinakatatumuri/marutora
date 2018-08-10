@@ -16,19 +16,18 @@ class CitiesController extends Controller
     
     public function show($id)
     {
-        # 都市コードの取得
+        // 都市データの取得
         $city = City::find($id);
         
-        # 天気の取得
+        // 天気の取得
         $weather = Api::fetchWeather($city->city_code);
         
-        # ニュースの取得
+        // ニュースの取得
         // $news = Api::fechNews($city->country_name);
         
-        return view('cities.show',compact('city','weather', 'news'));
+        // スクレイピングした為替データ(どっから取るか選定)
+        // $currency = Currency::where("JPY")->get();
         
-        /* $currency スクレイピングするか未定 */
-        /* $news = Api::fetchNews($news); */
-        //  return view('welcome',compact('weather','currency','news'));
+        return view('cities.show',compact('city','weather', 'news'));
     }
 }

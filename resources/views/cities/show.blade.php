@@ -21,5 +21,6 @@
     <p>都市: {{ $city->city_name }}</p>
     
     @include('items.weather', ['weather' => $weather])
+    <!--@include('items.news', ['news' => $news])-->
     
 @endsection
