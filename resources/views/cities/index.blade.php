@@ -20,7 +20,7 @@
         <div class="text-center nationalflag">
             @foreach ($cities as $city)
                 <div>
-                    <p>{{ $city->country_name }}</p>
+                    <p>{{ $city->country_name }}：{{ $city->city_name }}</p>
                     <a href="{{ route('city.show', $city->id) }}"><img src="{{ asset($city->img_path) }}" class="flag" alt="{{ $city->country_name }}"></a>
                 </div>
             @endforeach

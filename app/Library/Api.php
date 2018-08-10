@@ -1,12 +1,8 @@
 <?php
 
-
 namespace App\library;
 use Illuminate\Http\Request;
 
-/**
- * OpenWeatherMapAPI
- */
 class Api
 {
     // OpenWheatherMap api
@@ -69,7 +65,7 @@ class Api
         # Decode JSON response
         $news = json_decode($json, true);
         
-        dd($news);
+        # dd($news);
         return($news);
     }
 }

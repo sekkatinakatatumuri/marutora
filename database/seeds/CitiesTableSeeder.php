@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Library\Csv;
 
 class CitiesTableSeeder extends Seeder
 {
@@ -11,21 +12,10 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cities')->insert([
-            [
-                'city_code' => '2643741',
-                'currency_code' => 'GBP',
-                'country_name' => 'イギリス',
-                'city_name' => 'ロンドン',
-                'img_path' => '/images/flag/flag197.png'
-            ],
-            [
-                'city_code' => '3169070',
-                'currency_code' => 'EUR',
-                'country_name' => 'イタリア',
-                'city_name' => 'ローマ',
-                'img_path' => '/images/flag/flag091.png'
-            ],
-        ]);
+        $seed_csv_filepath = '/seeds/csv/oceania_seeder.csv';
+        $csv = new Csv($seed_csv_filepath);
+        $seeds = $csv->produceSeeds();
+        DB::table("cities")->insert($seeds);
     }
 }
+
