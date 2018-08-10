@@ -14,13 +14,5 @@
 @endsection
 
 @section('content')
-
-    <h1>id = {{ $city->id }} の詳細ページ</h1>
-
-    <p>国名: {{ $city->country_name }}</p>
-    <p>都市: {{ $city->city_name }}</p>
-    
     @include('items.weather', ['weather' => $weather])
-    <!--@include('items.news', ['news' => $news])-->
-    
 @endsection

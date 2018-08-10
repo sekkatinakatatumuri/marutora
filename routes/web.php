@@ -11,6 +11,11 @@
 |
 */
 
+// ログイン・レジスター
 Auth::routes();
+
 Route::get('/', 'CitiesController@index');
-Route::resource('city', 'CitiesController', ['only' => ['index', 'show']]);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('city', 'CitiesController', ['only' => ['show']]);
+});
