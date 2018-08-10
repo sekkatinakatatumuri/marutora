@@ -12,5 +12,5 @@
 */
 
 Auth::routes();
-Route::get('/', 'WelcomeController@index')->name('welcome.index');
-Route::resource('welcome', 'WelcomeController', ['only' => ['create']]);
+Route::get('/', 'CitiesController@index');
+Route::resource('city', 'CitiesController', ['only' => ['index', 'show']]);
