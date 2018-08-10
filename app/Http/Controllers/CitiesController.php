@@ -22,11 +22,13 @@ class CitiesController extends Controller
         // 天気の取得
         $weather = Api::fetchWeather($city->city_code);
         
-        // ニュースの取得
+        // ニュースの取得(Azure使えるようにもどす)
         // $news = Api::fechNews($city->country_name);
         
         // スクレイピングした為替データ(どっから取るか選定)
         // $currency = Currency::where("JPY")->get();
+        
+        // メッセージの取得(旅行サイト選定)
         
         return view('cities.show',compact('city','weather', 'news'));
     }
