@@ -15,13 +15,13 @@ class CreateCitiesTable extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('city_id')->unsigned()->index();
+            $table->integer('country_id')->unsigned()->index();
             $table->string('city_code');     // 都市コード
             $table->string('city_name');     // 都市
             $table->timestamps();
             
             // 外部キー制約
-            $table->foreign('city_id')->references('id')->on('countries');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 

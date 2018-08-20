@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Country;
-use App\City;
 use Carbon\Carbon;
 
-class CitiesTableSeeder extends Seeder
+class CountriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +13,8 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now();
-        $seeder_filepath = '/seeds/csv/cities_seeder.csv';
+        
+        $seeder_filepath = '/seeds/csv/countries_seeder.csv';
         $absolute_filepath = database_path() . $seeder_filepath;
         
         $file = new \SplFileObject($absolute_filepath);
@@ -26,19 +25,18 @@ class CitiesTableSeeder extends Seeder
             SplFileObject::DROP_NEW_LINE # 行末の改行を読み飛ばしする
         );
     
-        // $seeds = [];
+        $seeds = [];
         
         foreach($file as $row) {
             $seeds[] = [
-                "country_id" => $row[0],
-                "city_code" => $row[1],
-                "city_name" => $row[2],
+                "country_name" => $row[0],
+                "currency_code" => $row[1],
+                "img_path" => $row[2],
                 "created_at" => $now,
                 "updated_at" => $now,
             ];
         }
         
-        DB::table("cities")->insert($seeds);
+        DB::table("countries")->insert($seeds);
     }
 }
-

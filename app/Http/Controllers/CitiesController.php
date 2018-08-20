@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\City;
+use App\Country;
 use App\Library\Api;
 
 class CitiesController extends Controller
 {
     public function index()
     {
-        $cities = City::all();
-        return view('cities.index', compact('cities'));
+        $countries = Country::all();
+        return view('cities.index', compact('countries'));
     }
     
     public function show($id)
     {
         // 都市データの取得
         $city = City::find($id);
+        // dd($city);
         
         // 天気の取得
         $weather = Api::fetchWeather($city->city_code);

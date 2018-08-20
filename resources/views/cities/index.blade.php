@@ -18,10 +18,10 @@
         <h3 class="text-center">国旗から検索 <span class="glyphicon glyphicon-globe"></span></h3>
         <b><p class="text-center">ヨーロッパ</p></b>
         <div class="text-center nationalflag">
-            @foreach ($cities as $city)
+            @foreach ($countries as $country)
                 <div>
-                    <p>{{ $city->country_name }}：{{ $city->city_name }}</p>
-                    <a href="{{ route('city.show', $city->id) }}"><img src="{{ asset($city->img_path) }}" class="flag" alt="{{ $city->country_name }}"></a>
+                    <p>{{ $country->country_name }}</p>
+                    <a href="{{ route('city.show', $country->id) }}"><img src="{{ asset($country->img_path) }}" class="flag" alt="{{ $country->country_name }}"></a>
                 </div>
             @endforeach
         </div>
