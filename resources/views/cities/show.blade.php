@@ -14,5 +14,5 @@
 @endsection
 
 @section('content')
-    @include('items.weather', ['weather' => $weather])
+    @include('items.weather', ['weathers' => $weathers])
 @endsection
