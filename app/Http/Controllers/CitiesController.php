@@ -18,6 +18,7 @@ class CitiesController extends Controller
     public function show($id)
     {
         // 都市データの取得
+        $country = Country::find($id);
         $cities = City::where('country_id', $id)->get();
         
         $weathers = [];
@@ -27,13 +28,13 @@ class CitiesController extends Controller
         }
 
         // ニュースの取得(Azure使えるようにもどす)
-        // $news = Api::fechNews($city->country_name);
+        // $news = Api::fetchNews($country->country_name);
         
+        // dd($news);
         // スクレイピングした為替データ(どっから取るか選定)
         // $currency = Currency::where("JPY")->get();
         
         // メッセージの取得(旅行サイト選定)
-        
         return view('cities.show', compact('city','weathers'));
     }
 }

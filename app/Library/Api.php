@@ -5,13 +5,15 @@ use Illuminate\Http\Request;
 
 class Api
 {
-    // OpenWheatherMap api
+    /*
+     * OpenWheatherMap api
+    */
     public static function fetchWeather($city_code) {
         # set access key, required parameters
         $city_id = $city_code;
         $units = "metric";
-        $APIKEY = "3baebe8732d7455a542057847c0e17f7";
-        
+        $APIKEY = config('const.OWM_API_KEY');
+
         # initilize URL
         $url = "http://api.openweathermap.org/data/2.5/forecast?id=" . $city_id . "&units=" . $units . "&appid=" . $APIKEY;
         
@@ -24,16 +26,18 @@ class Api
         return($weather);
     }
     
-    // BingNewsSearch api v7
+    /*
+     * BingNewsSearch api v7
+    */
     public static function fetchNews($country_name) {
         # set access key
-        $accessKey = '819b0d7f18eb4bbc9665a3596cdd3c25';
+        $accessKey = config('const.BNS_API_KEY');
 
         # set API Endpoint
         $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/news/search';
         
         # set required parameters
-        $term = $keyword;
+        $term = $country_name;
 
         function BingNewsSearch ($url, $key, $query) {
             # Prepare HTTP request

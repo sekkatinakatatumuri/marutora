@@ -1,8 +1,8 @@
 @if ($weathers)
+    <h1 class="weather category text-center">天気</h1>
     @foreach ($weathers as $weather) 
-        <div class="weather col-sm-12">
+        <div class="weather col-sm-12 text-center">
             <div class="inner">
-            <h1 class="weather category">天気</h1>
             <h3>{{ $weather['city']['name'] }}</h3>
             @for ($i = 3; $i < 40; $i = $i + 8)
                 <ul>
