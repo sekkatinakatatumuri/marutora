@@ -21,16 +21,23 @@ class CitiesController extends Controller
         // 国データの取得
         $country = Country::find($id);
         // 都市データの取得
-        $cities = City::where('country_id', $id)->get();
+        $cities = $country->cities;
         
+        ## 天気
+        
+        // 都市ごとの天気を格納する配列を定義
         $weathers = [];
         // 選択した国の都市の天気を取得
         foreach($cities as $city) {
             $weathers[] = Api::fetchWeather($city->city_code);
         }
-
+        
+        ## ニュース
+        
         // ニュースの取得(Azure使えるようにもどす)
         // $news = Api::fetchNews($country->country_name);
+        
+        ## 為替
         
         // 為替データの取得
         $exchange = Exchange::where('currency', $country->currency_code)->count();
@@ -43,6 +50,7 @@ class CitiesController extends Controller
                 'value'=>'N/A',
             ];
         }
+        
         // メッセージの取得(旅行サイト選定)
         return view('cities.show', compact('city', 'weathers', 'exchange'));
     }
