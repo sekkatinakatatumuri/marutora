@@ -9,7 +9,7 @@ $dom->formatOutput = true;
 $xpath = new DOMXPath($dom);
 
 //件数の取得
-$tests2 = $xpath->query('//*[@id="main"]/div[1]/table/tbody/tr[2]/td[4]')->item(0)->nodeValue;
+$tests = $xpath->query('//*[@id="main"]/div[1]/table/tbody/tr[2]/td[4]')->item(0)->nodeValue;
 
-var_dump($tests2);
-echo $tests2;
+var_dump($tests);
+echo $tests;
