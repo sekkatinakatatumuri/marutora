@@ -30,11 +30,10 @@ class CitiesController extends Controller
         // ニュースの取得(Azure使えるようにもどす)
         // $news = Api::fetchNews($country->country_name);
         
-        // dd($news);
-        // スクレイピングした為替データ(どっから取るか選定)
-        // $currency = Currency::where("JPY")->get();
+        // 為替データの取得
+        $exchange = Api::fechExchange($country->currency_code);
         
         // メッセージの取得(旅行サイト選定)
-        return view('cities.show', compact('city','weathers'));
+        return view('cities.show', compact('city', 'weathers', 'exchange'));
     }
 }

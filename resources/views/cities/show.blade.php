@@ -15,4 +15,5 @@
 
 @section('content')
     @include('items.weather', ['weathers' => $weathers])
+    @include('items.exchange', ['exchange' => $exchange])
 @endsection

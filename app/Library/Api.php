@@ -9,21 +9,49 @@ class Api
      * OpenWheatherMap api
     */
     public static function fetchWeather($city_code) {
-        # set access key, required parameters
+        // パラメータセット
         $city_id = $city_code;
         $units = "metric";
         $APIKEY = config('const.OWM_API_KEY');
 
-        # initilize URL
+        // URLの設定
         $url = "http://api.openweathermap.org/data/2.5/forecast?id=" . $city_id . "&units=" . $units . "&appid=" . $APIKEY;
         
-        # get the (still encoded) JSON data
+        // JSONを取得
         $json = file_get_contents($url);
         
-        # Decode JSON response
+        // JSONを配列に変換
         $weather = json_decode($json, true);
         
         return($weather);
+    }
+    
+    /*
+     * 1forge api
+    */
+    public static function fechExchange($currency) {
+        // パラメータセット
+        $from = $currency;
+        $to = 'JPY';
+        $quanity = '1';
+        $APIKEY = config('const.1FORGE_API_KEY');
+
+        // 1つの通貨から別の通貨に換算
+        $url = 'https://forex.1forge.com/1.0.3/convert' . '?from=' . $from . '&to=' . $to . '&quantity=' . $quanity . '&api_key=' . $APIKEY;
+        
+        # 残りのリクエストの回数を確認
+        # $url = "https://forex.1forge.com/1.0.3/quota?api_key=" . $APIKEY;
+        
+        # 通貨記号の一覧を取得
+        # $url = "https://forex.1forge.com/1.0.3/symbols?api_key=" . $APIKEY;
+        
+        // JSONを取得
+        $json = file_get_contents($url);
+        
+        // JSONを配列に変換
+        $exchange = json_decode($json, true);
+        
+        return($exchange);
     }
     
     /*
