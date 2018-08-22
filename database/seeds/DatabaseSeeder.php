@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             CountriesTableSeeder::class,
             CitiesTableSeeder::class,
+            CurrencyTableSeeder::class,
         ]);
     }
 }

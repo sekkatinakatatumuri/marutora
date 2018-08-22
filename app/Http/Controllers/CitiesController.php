@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\City;
 use App\Country;
+use App\Exchange;
 use App\Library\Api;
 
 class CitiesController extends Controller
@@ -17,13 +18,14 @@ class CitiesController extends Controller
     
     public function show($id)
     {
-        // 都市データの取得
+        // 国データの取得
         $country = Country::find($id);
+        // 都市データの取得
         $cities = City::where('country_id', $id)->get();
         
         $weathers = [];
+        // 選択した国の都市の天気を取得
         foreach($cities as $city) {
-            // 選択した首都の天気の取得
             $weathers[] = Api::fetchWeather($city->city_code);
         }
 
@@ -31,8 +33,16 @@ class CitiesController extends Controller
         // $news = Api::fetchNews($country->country_name);
         
         // 為替データの取得
-        $exchange = Api::fechExchange($country->currency_code);
-        
+        $exchange = Exchange::where('currency', $country->currency_code)->count();
+        // 対応した通貨の場合
+        if ($exchange === 1) {
+            $exchange = Api::fechExchange($country->currency_code);
+        } else {
+            $exchange = [
+                'text'=>'未対応通貨のため表示できません',
+                'value'=>'N/A',
+            ];
+        }
         // メッセージの取得(旅行サイト選定)
         return view('cities.show', compact('city', 'weathers', 'exchange'));
     }
